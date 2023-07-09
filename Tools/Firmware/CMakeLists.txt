@@ -24,6 +24,8 @@ include_directories(
     ## Driver Includes ##
     ${ROOT_DIR}/Drivers/ccontrol/Inc
     ${ROOT_DIR}/Drivers/sensor_fusion/Inc
+    ${ROOT_DIR}/Drivers/UARTDevice/Inc
+    ${ROOT_DIR}/Drivers/Common/Inc
 
     ## Boardfiles Includes ##
     ${ROOT_DIR}/Boardfiles/${FOLDER_NAME}/Drivers/${FAMILY_NAME}_HAL_Driver/Inc
@@ -62,6 +64,12 @@ set(DRIVERS_C_SOURCES "${DRIVERS_DIR}/ccontrol/Src/*.c")
 set(DRIVERS_CXX_SOURCES "${DRIVERS_DIR}/sensor_fusion/Src/*.cpp")
 
 ## Actually find the sources, NOTE: if you add a new source above, add it here! ##
+## Drivers Sources ##
+set(DRIVERS_UARTDevice_DIR ${ROOT_DIR}/Drivers/RcReceiver/Src)
+set(DRIVERS_UARTDevice_CXX_SOURCES "${DRIVERS_UARTDevice_DIR}/*.cpp")
+set(DRIVERS_Common_DIR ${ROOT_DIR}/Drivers/Common/Src)
+set(DRIVERS_Common_CXX_SOURCES "${DRIVERS_Common_DIR}/*.cpp")
+
 file(GLOB_RECURSE C_SOURCES ${HAL_DRIVERS_C_SOURCES}
                             ${FREE_RTOS_C_SOURCES}
                             ${HAL_CORE_C_SOURCES}
@@ -70,7 +78,9 @@ file(GLOB_RECURSE C_SOURCES ${HAL_DRIVERS_C_SOURCES}
 message("C Sources: ${C_SOURCES}")
 file(GLOB_RECURSE CXX_SOURCES ${HAL_CORE_CXX_SOURCES}
                               ${ATTITUDE_MANAGER_CXX_SOURCES}
-                              ${DRIVERS_CXX_SOURCES})
+                              ${DRIVERS_CXX_SOURCES}
+                              ${DRIVERS_UARTDevice_CXX_SOURCES}
+                              ${DRIVERS_Common_CXX_SOURCES})
 message("C++ Sources: ${CXX_SOURCES}")
 
 ## Find the startup and linker script ##
