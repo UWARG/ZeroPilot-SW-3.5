@@ -23,9 +23,7 @@ namespace TM {
 			 *
 			 * @param _huart uart port assigned
 			 */
-			TelemetryManger(UART_HandlerTypeDef* _huart)
-				:
-				_uart_handler(_huart) {};
+			TelemetryManger(UART_HandlerTypeDef* argv, uint8_t argc);
 
 			/*transmit mavlink packet interface function starts here*/
 
