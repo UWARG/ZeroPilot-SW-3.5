@@ -11,19 +11,22 @@
 
 #include "AM_ControlAlgorithm.hpp"
 #include "CommonDataTypes.hpp"
+#include "ZP_D_PWMChannel.hpp"
 
 namespace AM {
 
 class AttitudeManager {
    public:
-    AttitudeManager(ControlAlgorithm* control_algorithm) : control_algorithm(control_algorithm){};
+    AttitudeManager(ControlAlgorithm* control_algorithm);
 
     void runControlLoopIteration(const AttitudeManagerInput& instructions);
 
    private:
     AttitudeManager();
+    void outputToMotor(uint8_t percent);
 
     ControlAlgorithm* control_algorithm;
+    MotorChannel* motorChannel_;
 };
 }  // namespace AM
 
