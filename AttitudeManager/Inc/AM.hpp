@@ -16,14 +16,14 @@ namespace AM {
 
 class AttitudeManager {
    public:
-    AttitudeManager(ControlAlgorithm* control_algorithm) : control_algorithm(control_algorithm){};
+    AttitudeManager(Flightmode* control_algorithm) : control_algorithm(control_algorithm){};
 
     void runControlLoopIteration(const AttitudeManagerInput& instructions);
 
    private:
     AttitudeManager();
 
-    ControlAlgorithm* control_algorithm;
+    Flightmode* control_algorithm;
 };
 }  // namespace AM
 
